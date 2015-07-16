@@ -2,20 +2,18 @@
 
 $(function(){
 
-  // SETTING THE STAGE
+  // SETTING THE STAGE:
   var 
-    // naming the 4 variables shown on the page:
+    // naming 2 integer inputs with which we will be working:
     num1       = 0,
     num2       = 0,
-    operation = '', // this will take on 1 of 4 arithmetic operations, default is + 
-    outcome = 0,
 
     // names equals button and outcome
     $equalsButton = $('#equals'),
     $resultForm = $('#result'),
 
     // name button elements for the 4 functions in +|-|/|*:
-    $selectedOperation = $('#operation'),
+    $selectedOperation = $('#operation'), // big button that shows choice
       $addButton = $('#add'),
       $subtractButton = $('#sub'),
       $multButton = $('#mult'),
@@ -31,7 +29,10 @@ $(function(){
 
       $plusButton2 = $number2.find('.incr'), // increment num2 by 1
       $minusButton2 = $number2.find('.decr'), // increment num2 by 1
-      $buttonShown2 = $number2.find('.number');
+      $buttonShown2 = $number2.find('.number'),
+
+    // addding a reset button
+    $resetButton = $('#reset');
 
   // ACTUAL FUNCTIONS START HERE:
 
@@ -106,4 +107,17 @@ $(function(){
     }
   });
   // ENDS processing results (equals button)
+
+  // STARTS implementing reset function:
+    $resetButton.click(function(){
+    num1 = 0;
+      $buttonShown1.text(num1);
+    num2 = 0;
+      $buttonShown2.text(num2);
+    operation = '+';
+      $selectedOperation.text(operation);
+    outcome = 0;
+      $resultForm.text(outcome);
+  });
+    
 }); // ends function
