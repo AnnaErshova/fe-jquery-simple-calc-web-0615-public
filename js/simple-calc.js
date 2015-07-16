@@ -4,17 +4,16 @@ $(function(){
 
   // SETTING THE STAGE:
   var
-    // naming 2 integer inputs with which we will be working:
-    num1       = 0,
-    num2       = 0,
-    operation = 0,
+    num1 = 0,
+    num2 = 0,
+    operation = 0, // this will come in handy for eval
 
     // name buttons for num1 and num2:
-      $buttonShown1 = $('#number1 .number'), 
+    $buttonShown1 = $('#number1 .number'), 
       $plusButton1 = $('#number1 .incr'), // increment num1 by 1
       $minusButton1 = $('#number1 .decr'), // decrement num1 by 1
 
-      $buttonShown2 = $('#number2 .number'),
+    $buttonShown2 = $('#number2 .number'),
       $plusButton2 = $('#number2 .incr'), // increment num2 by 1
       $minusButton2 = $('#number2 .decr'), // increment num2 by 1
 
@@ -25,15 +24,16 @@ $(function(){
       $multButton = $('#mult'),
       $divButton = $('#div'),
 
-    // names equals button and outcome
+    // names equals button:
     $equalsButton = $('#equals'),
+    // names outcome space:
     $resultForm = $('#result'),
-    // addding a reset button
+    // addding a reset button:
     $resetButton = $('#reset');
+  // STAGE HAS BEEN SET. MOVING ON....
 
   // ACTUAL FUNCTIONS START HERE:
-
-  // STARTS incrementing and decrementing num1 and num2
+  // STARTS incrementing and decrementing num1 and num2:
   $plusButton1.click(function(){
     num1 ++;
     $buttonShown1.text(num1);
@@ -77,7 +77,7 @@ $(function(){
   });
   // ENDS assigning arithmetic operations
 
-  // STARTS processing results (equals button)
+  // STARTS processing results (equals button):
   $equalsButton.click(function(){
     if ((num2 === 0) && ($selectedOperation == '/')){
       outcome = "can't divide by 0";
@@ -91,7 +91,7 @@ $(function(){
   });
   // ENDS processing results (equals button)
 
-  // STARTS implementing reset function:
+  // STARTS reset function:
   $resetButton.click(function(){
     num1 = 0;
       $buttonShown1.text(num1);
@@ -102,5 +102,6 @@ $(function(){
     outcome = 0;
       $resultForm.text(outcome);
   });
+  // ENDS reset function
 
 }); // ends function
