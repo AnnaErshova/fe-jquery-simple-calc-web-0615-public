@@ -3,10 +3,11 @@
 $(function(){
 
   // SETTING THE STAGE:
-  var 
+  var
     // naming 2 integer inputs with which we will be working:
     num1       = 0,
     num2       = 0,
+    operation = 0,
 
     // name buttons for num1 and num2:
       $buttonShown1 = $('#number1 .number'), 
@@ -78,35 +79,20 @@ $(function(){
 
   // STARTS processing results (equals button)
   $equalsButton.click(function(){
-    switch(operation) { // implenenting 4 scenarios for 4 arithmetic operations
-      case '+': 
-        outcome = num1 + num2; 
-          $resultForm.text(outcome); 
-            break;
-      case '-': 
-        outcome = num1 - num2; 
-          $resultForm.text(outcome); 
-            break;
-      case '*': 
-        outcome = num1 * num2; 
-          $resultForm.text(outcome); 
-            break;
-      case '/': 
-        if (num2 == 0) {
-          outcome = "can't divide by 0";
-          $resultForm.text(outcome);
-          alert("can't divide by 0!");
-        }
-        else if (num2 != 0) {
-          outcome = num1 / num2;
-          $resultForm.text(outcome); 
-            break;}; // interestingly enough, it returns 'infinity' when divided by 0
+    if ((num2 === 0) && ($selectedOperation == '/')){
+      outcome = "can't divide by 0";
+      $resultForm.text(outcome);
+      alert("can't divide by 0!");
     }
+    else {
+      outcome = eval(num1+operation+num2);
+      $resultForm.text(outcome);
+    };
   });
   // ENDS processing results (equals button)
 
   // STARTS implementing reset function:
-    $resetButton.click(function(){
+  $resetButton.click(function(){
     num1 = 0;
       $buttonShown1.text(num1);
     num2 = 0;
