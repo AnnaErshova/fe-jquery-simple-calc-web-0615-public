@@ -3,22 +3,24 @@ $(function(){
 var num1       = 0,
     num2       = 0,
       
-    operation     = '+',
-    result        = 0,
+    operation = '+',
+    result = 0,
 
-    $number1      = $('#number1'),
-    $number2      = $('#number2'),
+    $number1 = $('#number1'),
+    $number2 = $('#number2'),
 
-    $addButton    = $('#add'),
-    $subButton    = $('#sub'),
-    $multButton   = $('#mult'),
-    $divButton    = $('#div'),
+    $addButton = $('#add'),
+    $subButton = $('#sub'),
+    $multButton = $('#mult'),
+    $divButton = $('#div'),
     $equalsButton = $('#equals'),
 
-    $opReport     = $('#operation'),
+    $opReport = $('#operation'),
 
-    $result       = $('#result');
+    $result = $('#result');
 
+    // $(selector).method(parameters)
+    // have to use 'find' because there are 2 matching sets for num1 and num2
     $n1PlusButton = $number1.find('.incr'), // increment num1 by 1
     $n1MinusButton = $number1.find('.decr'), // decrement num1 by 1
     $n1Report     = $number1.find('.number'), 
@@ -27,7 +29,7 @@ var num1       = 0,
     $n2MinusButton = $number2.find('.decr'), // increment num2 by 1
     $n2Report     = $number2.find('.number'),
 
-  // STARTS detailing out incrementing and decrementing
+  // STARTS incrementing and decrementing num1 and num2
   $n1PlusButton.click(function(){
     num1 += 1;
     $n1Report.text(num1);
@@ -51,9 +53,9 @@ var num1       = 0,
       $n2Report.text(num2);
     }
   });
-  // ENDS detailing out incrementing and decrementing
+  // ENDS incrementing and decrementing num1 and num2
 
-  // STARTS assigning arithmetic operations
+  // STARTS assigning arithmetic operations to click of 1 of 4 buttons
   $addButton.click(function(){
     operation = '+';
     $opReport.text(operation);
