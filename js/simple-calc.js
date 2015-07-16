@@ -8,9 +8,14 @@ $(function(){
     num1       = 0,
     num2       = 0,
 
-    // names equals button and outcome
-    $equalsButton = $('#equals'),
-    $resultForm = $('#result'),
+    // name buttons for num1 and num2:
+      $buttonShown1 = $('#number1 .number'), 
+      $plusButton1 = $('#number1 .incr'), // increment num1 by 1
+      $minusButton1 = $('#number1 .decr'), // decrement num1 by 1
+
+      $buttonShown2 = $('#number2 .number'),
+      $plusButton2 = $('#number2 .incr'), // increment num2 by 1
+      $minusButton2 = $('#number2 .decr'), // increment num2 by 1
 
     // name button elements for the 4 functions in +|-|/|*:
     $selectedOperation = $('#operation'), // big button that shows choice
@@ -19,18 +24,9 @@ $(function(){
       $multButton = $('#mult'),
       $divButton = $('#div'),
 
-    // affiliating buttons for 1st and 2nd variables
-    $number1 = $('#number1'), // first button affiliation
-    $number2 = $('#number2'), // second button affiliation 
-
-      $plusButton1 = $number1.find('.incr'), // increment num1 by 1
-      $minusButton1 = $number1.find('.decr'), // decrement num1 by 1
-      $buttonShown1 = $number1.find('.number'), 
-
-      $plusButton2 = $number2.find('.incr'), // increment num2 by 1
-      $minusButton2 = $number2.find('.decr'), // increment num2 by 1
-      $buttonShown2 = $number2.find('.number'),
-
+    // names equals button and outcome
+    $equalsButton = $('#equals'),
+    $resultForm = $('#result'),
     // addding a reset button
     $resetButton = $('#reset');
 
@@ -99,6 +95,7 @@ $(function(){
         if (num2 == 0) {
           outcome = "can't divide by 0";
           $resultForm.text(outcome);
+          alert("can't divide by 0!");
         }
         else if (num2 != 0) {
           outcome = num1 / num2;
@@ -119,5 +116,5 @@ $(function(){
     outcome = 0;
       $resultForm.text(outcome);
   });
-    
+
 }); // ends function
