@@ -1,79 +1,81 @@
+// I am going to permit negative numbers in variables even though the prototype doesn't
+
 $(function(){
 
-var num1       = 0,
+  // SETTING THE STAGE
+  var 
+    // naming the 4 variables shown on the page:
+    num1       = 0,
     num2       = 0,
-      
-    operation = '+',
-    result = 0,
+    operation = '', // this will take on 1 of 4 arithmetic operations, default is + 
+    outcome = 0,
 
-    $number1 = $('#number1'),
-    $number2 = $('#number2'),
-
-    $addButton = $('#add'),
-    $subButton = $('#sub'),
-    $multButton = $('#mult'),
-    $divButton = $('#div'),
+    // names equals button and outcome
     $equalsButton = $('#equals'),
+    $resultForm = $('#result'),
 
-    $opReport = $('#operation'),
+    // name button elements for the 4 functions in +|-|/|*:
+    $selectedOperation = $('#operation'),
+      $addButton = $('#add'),
+      $subtractButton = $('#sub'),
+      $multButton = $('#mult'),
+      $divButton = $('#div'),
 
-    $result = $('#result');
+    // affiliating buttons for 1st and 2nd variables
+    $number1 = $('#number1'), // first button affiliation
+    $number2 = $('#number2'), // second button affiliation 
 
-    // $(selector).method(parameters)
-    // have to use 'find' because there are 2 matching sets for num1 and num2
-    $n1PlusButton = $number1.find('.incr'), // increment num1 by 1
-    $n1MinusButton = $number1.find('.decr'), // decrement num1 by 1
-    $n1Report     = $number1.find('.number'), 
+      $plusButton1 = $number1.find('.incr'), // increment num1 by 1
+      $minusButton1 = $number1.find('.decr'), // decrement num1 by 1
+      $buttonShown1 = $number1.find('.number'), 
 
-    $n2PlusButton = $number2.find('.incr'), // increment num2 by 1
-    $n2MinusButton = $number2.find('.decr'), // increment num2 by 1
-    $n2Report     = $number2.find('.number'),
+      $plusButton2 = $number2.find('.incr'), // increment num2 by 1
+      $minusButton2 = $number2.find('.decr'), // increment num2 by 1
+      $buttonShown2 = $number2.find('.number');
+
+  // ACTUAL FUNCTIONS START HERE:
 
   // STARTS incrementing and decrementing num1 and num2
-  $n1PlusButton.click(function(){
-    num1 += 1;
-    $n1Report.text(num1);
+  $plusButton1.click(function(){
+    num1 ++;
+    $buttonShown1.text(num1);
   });
 
-  $n1MinusButton.click(function(){
-    if (num1 > 0) {
-      num1 -= 1;
-      $n1Report.text(num1);
-    }
+  $plusButton2.click(function(){
+    num2 ++;
+    $buttonShown2.text(num2);
   });
 
-  $n2PlusButton.click(function(){
-    num2 += 1;
-    $n2Report.text(num2);
+  $minusButton1.click(function(){
+    num1 --;
+    $buttonShown1.text(num1);
   });
 
-  $n2MinusButton.click(function(){
-    if (num2 > 0) {
-      num2 -= 1;
-      $n2Report.text(num2);
-    }
+  $minusButton2.click(function(){
+    num2 --;
+    $buttonShown2.text(num2);
   });
   // ENDS incrementing and decrementing num1 and num2
 
   // STARTS assigning arithmetic operations to click of 1 of 4 buttons
   $addButton.click(function(){
     operation = '+';
-    $opReport.text(operation);
+    $selectedOperation.text(operation);
   });
 
-  $subButton.click(function(){
+  $subtractButton.click(function(){
     operation = '-';
-    $opReport.text(operation);
+    $selectedOperation.text(operation);
   });
 
   $multButton.click(function(){
     operation = '*';
-    $opReport.text(operation);
+    $selectedOperation.text(operation);
   });
 
   $divButton.click(function(){
     operation = '/';
-    $opReport.text(operation);
+    $selectedOperation.text(operation);
   });
   // ENDS assigning arithmetic operations
 
@@ -81,24 +83,26 @@ var num1       = 0,
   $equalsButton.click(function(){
     switch(operation) { // implenenting 4 scenarios for 4 arithmetic operations
       case '+': 
-        result = num1 + num2; 
-          $result.text(result); 
+        outcome = num1 + num2; 
+          $resultForm.text(outcome); 
             break;
       case '-': 
-        result = num1 - num2; 
-          $result.text(result); 
+        outcome = num1 - num2; 
+          $resultForm.text(outcome); 
             break;
       case '*': 
-        result = num1 * num2; 
-          $result.text(result); 
+        outcome = num1 * num2; 
+          $resultForm.text(outcome); 
             break;
       case '/': 
-        result = num1 / num2;
-          $result.text(result); 
-            break;
-      default : 
-        result = NaN; 
-          $result.text(result);
+        if (num2 == 0) {
+          outcome = "can't divide by 0";
+          $resultForm.text(outcome);
+        }
+        else if (num2 != 0) {
+          outcome = num1 / num2;
+          $resultForm.text(outcome); 
+            break;}; // interestingly enough, it returns 'infinity' when divided by 0
     }
   });
   // ENDS processing results (equals button)
